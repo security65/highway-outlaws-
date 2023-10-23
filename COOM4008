@@ -1,0 +1,38 @@
+import pygame
+from pygame.locals import *
+import random
+
+pygame.init()
+running = True
+
+# Fonts
+font = pygame.font.Font(None, 50)
+
+# Variable for size of screen
+size = width, height = (900, 800)
+
+# Screen size
+screen = pygame.display.set_mode((size))
+
+# Name of game
+pygame.display.set_caption("Highway Outlaws")
+
+# Main menu function
+def main_menu():
+    while True:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+            #pressing spacebar to play the game
+            if event.type == KEYDOWN and event.key == K_SPACE:
+                return
+
+        screen.fill((0, 0, 0))
+        # main menu text and positioning
+        title_text = font.render("Press SPACE to Drive", True, ((255, 255, 255)))
+        screen.blit(title_text, (width // 2 - title_text.get_width() // 2, height // 2 - title_text.get_height() // 2))
+        # Updating the display
+        pygame.display.flip()
+
+#calling the main menu function
+main_menu()
